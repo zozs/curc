@@ -1,0 +1,26 @@
+{
+  "name": "curc",
+  "version": "1.0.0",
+  "description": "Currency converter",
+  "main": "curc.js",
+  "scripts": {
+    "test": "standard"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zozs/curc.git"
+  },
+  "author": "Linus Karlsson <me@linuskarlsson.se>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zozs/curc/issues"
+  },
+  "homepage": "https://github.com/zozs/curc#readme",
+  "devDependencies": {
+    "standard": "^11.0.1"
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "dotenv": "^6.0.0"
+  }
+}
