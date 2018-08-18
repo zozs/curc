@@ -1,4 +1,7 @@
-require('dotenv').config()
+#!/usr/bin/env node
+
+const path = require('path')
+require('dotenv').config({path: path.join(__dirname, '.env')})
 const axios = require('axios')
 const readline = require('readline')
 
