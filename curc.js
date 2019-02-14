@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 const path = require('path')
-require('dotenv').config({path: path.join(__dirname, '.env')})
+require('dotenv').config({ path: path.join(__dirname, '.env') })
 const axios = require('axios')
 const readline = require('readline')
 
@@ -52,7 +52,7 @@ cli.on('line', async line => {
     default:
       try {
         const defaultDestCurrency = process.env.DEFAULT_DEST_CURRENCY
-        let {amount, sourceCurrency, destinationCurrencies} = parseConversion(line.trim())
+        let { amount, sourceCurrency, destinationCurrencies } = parseConversion(line.trim())
 
         sourceCurrency = await normalizeCurrency(sourceCurrency)
         if (destinationCurrencies.length === 0) {
@@ -62,7 +62,7 @@ cli.on('line', async line => {
         const converted = await convert(amount, sourceCurrency, destinationCurrencies)
 
         console.log(`${amount.toFixed(2)} ${sourceCurrency} =>`)
-        for (const {amount: a, currency: c} of converted) {
+        for (const { amount: a, currency: c } of converted) {
           console.log(`  ${a.toFixed(2)} ${c}`)
         }
       } catch (e) {

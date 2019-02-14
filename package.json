@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/zozs/curc#readme",
   "devDependencies": {
-    "standard": "^11.0.1"
+    "standard": "^12.0.1"
   },
   "dependencies": {
     "axios": "^0.18.0",

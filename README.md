@@ -39,7 +39,7 @@ curc> 40eur sek usd
 ## License
 
 ```
-Copyright 2018, Linus Karlsson
+Copyright 2018, 2019, Linus Karlsson
 
 Permission to use, copy, modify, and/or distribute this software for any
 purpose with or without fee is hereby granted, provided that the above
