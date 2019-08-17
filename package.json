@@ -4,7 +4,9 @@
   "description": "Currency converter",
   "main": "curc.js",
   "scripts": {
-    "test": "standard && jest"
+    "test": "standard && jest",
+    "jest": "jest",
+    "style": "standard"
   },
   "repository": {
     "type": "git",
@@ -22,6 +24,7 @@
   },
   "dependencies": {
     "axios": "^0.19.0",
-    "dotenv": "^6.0.0"
+    "dotenv": "^6.0.0",
+    "math-expression-evaluator": "^1.2.17"
   }
 }

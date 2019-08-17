@@ -37,3 +37,35 @@ test('parse amount with comma', () => {
 test('parse no source currency', () => {
   expect(() => parseConversion('50.0')).toThrow()
 })
+
+test('parse no destination currency with arithmetic expression', () => {
+  expect(parseConversion('(5+3-1)eur')).toEqual({
+    amount: 7.0,
+    sourceCurrency: 'eur',
+    destinationCurrencies: []
+  })
+})
+
+test('parse one destination currency with arithmetic expression', () => {
+  expect(parseConversion('(0.5+100*100/20)dkk eur')).toEqual({
+    amount: 500.5,
+    sourceCurrency: 'dkk',
+    destinationCurrencies: ['eur']
+  })
+})
+
+test('parse two destination currencies with arithmetic expression', () => {
+  expect(parseConversion('(53.21+19.90)jpy eur sek')).toEqual({
+    amount: 73.11,
+    sourceCurrency: 'jpy',
+    destinationCurrencies: ['eur', 'sek']
+  })
+})
+
+test('parse no source currency with arithmetic expression', () => {
+  expect(() => parseConversion('(50.0+5)')).toThrow()
+})
+
+test('parse with invalid arithmetic expression', () => {
+  expect(() => parseConversion('(50.0+)eur sek')).toThrow()
+})
