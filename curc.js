@@ -5,14 +5,10 @@ require('dotenv').config({ path: path.join(__dirname, '.env') })
 const axios = require('axios')
 const readline = require('readline')
 
+const { parseConversion } = require('./parser.js')
+
 // Start by setting up a Promise to fetch current currency data in the background.
 const apiKey = process.env.API_KEY
-
-// Debugging fetch of exchange rates.
-/* const ratesPromise = new Promise((resolve, reject) => {
-  const testData = require('./testdata.json')
-  setTimeout(resolve, 5000, testData)
-}) */
 
 // Production fetch of exchange rates.
 const ratesPromise = axios.get(`http://data.fixer.io/api/latest?access_key=${apiKey}`)
@@ -71,27 +67,6 @@ cli.on('line', async line => {
   }
   cli.prompt()
 })
-
-function parseConversion (line) {
-  const pattern = /^(\d+([.,]\d+)?)\s?([a-zA-Z]+)((\s[a-zA-Z]+)*)$/
-  const match = pattern.exec(line)
-
-  if (match === null) {
-    throw Error('invalid input')
-  }
-
-  let destinationCurrencies = match[4].trim().split(/\s/)
-  if (match[4].trim() === '') {
-    // If no destination currencies are given, return empty array instead of [''].
-    destinationCurrencies = []
-  }
-
-  return {
-    amount: parseFloat(match[1].replace(',', '.')),
-    sourceCurrency: match[3],
-    destinationCurrencies
-  }
-}
 
 async function convert (amount, srcCurrency, destCurrencies) {
   return Promise.all(destCurrencies.map(dst => convertSingle(amount, srcCurrency, dst)))
