@@ -1,7 +1,7 @@
 const mexp = require('math-expression-evaluator')
 
 function parseConversion (line) {
-  const pattern = /^((\d+([.,]\d+)?)|\([^)]+\))\s?([a-zA-Z]+)((\s[a-zA-Z]+)*)$/
+  const pattern = /^((\d+([.,]\d+)?)|\(.+\))\s?([a-zA-Z]+)((\s[a-zA-Z]+)*)$/
   const match = pattern.exec(line)
 
   if (match === null) {

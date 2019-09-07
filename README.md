@@ -15,7 +15,8 @@ See `.env.example` for an example. The default destination currency can be chang
 
 ## Usage
 
-Example input/output. Default destination currency is SEK.
+Example input/output. Default destination currency is SEK. By writing the amount enclosed in parentheses,
+arbitrary expressions can be evaluated before doing the currency conversion.
 
 ```
 curc> 11.99eur
@@ -25,6 +26,10 @@ curc> 11.99eur
 curc> 10usd
 10.00 USD =>
   91.58 SEK
+
+curc> ((5+4.5)/2)eur
+4.75 EUR =>
+  51.00 SEK
 
 curc> 30sek usd
 30.00 SEK =>

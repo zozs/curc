@@ -54,6 +54,14 @@ test('parse one destination currency with arithmetic expression', () => {
   })
 })
 
+test('parse one destination currency with nested arithmetic expressions', () => {
+  expect(parseConversion('((0.5+100)*100/20)dkk eur')).toEqual({
+    amount: 502.5,
+    sourceCurrency: 'dkk',
+    destinationCurrencies: ['eur']
+  })
+})
+
 test('parse two destination currencies with arithmetic expression', () => {
   expect(parseConversion('(53.21+19.90)jpy eur sek')).toEqual({
     amount: 73.11,
