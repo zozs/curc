@@ -33,18 +33,20 @@ cli.on('line', async line => {
     case 'quit':
       cli.close()
       break
-    case 'currencies':
+    case 'currencies': {
       const currencies = await currenciesPromise
       for (const currency of currencies) {
         console.log(currency)
       }
       break
-    case 'rates':
+    }
+    case 'rates': {
       const rates = await ratesPromise
       for (const [c, rate] of Object.entries(rates.rates)) {
         console.log(`${c}: ${rate}`)
       }
       break
+    }
     default:
       try {
         const defaultDestCurrency = process.env.DEFAULT_DEST_CURRENCY
